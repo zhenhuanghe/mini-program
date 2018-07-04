@@ -1,0 +1,102 @@
+<template>
+  <div>    
+    <zan-button>取消订单</zan-button>
+     
+  </div>
+</template>
+
+<script>
+import card from '@/components/card'
+
+export default {
+  data () {
+    return {
+      motto: 'Hello World',
+      userInfo: {},
+      menu: [{
+      'level01': 'a',
+      'level02': ['a1', 'a2', 'a3', 'a3']
+    },{
+      'level01': 'b',
+      'level02': ['b1', 'b2', 'b3', 'b3']
+    },{
+      'level01': 'c',
+      'level02': ['c1', 'c2', 'c3', 'c3']
+    },{
+      'level01': 'd',
+      'level02': ['d1', 'd2', 'd3', 'd3']
+    }]
+    }
+  },
+
+  components: {
+    card
+  },
+
+  methods: {
+    bindViewTap () {
+      const url = '../logs/main'
+      wx.navigateTo({ url })
+    },
+    getUserInfo () {
+      // 调用登录接口
+      wx.login({
+        success: () => {
+          wx.getUserInfo({
+            success: (res) => {
+              this.userInfo = res.userInfo
+            }
+          })
+        }
+      })
+    },
+    clickHandle (msg, ev) {
+      console.log('clickHandle:', msg, ev)
+    }
+  },
+
+  created () {
+    // 调用应用实例的方法获取全局数据
+    this.getUserInfo()
+  }
+}
+</script>
+
+<style scoped>
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 0px;
+}
+
+.form-control {
+  display: block;
+  padding: 0 12px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+}
+
+.counter {
+  display: inline-block;
+  margin: 10px auto;
+  padding: 5px 10px;
+  color: blue;
+  border: 1px solid blue;
+}
+
+</style>
