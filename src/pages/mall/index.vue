@@ -3,7 +3,7 @@
     <!-- 顶部搜索框 -->
     <zan-row row-class="custom-zan-row-search">
       <zan-col col="16" offset="">
-        <input type="text" placeholder="请输入查询内容">
+        <input type="text" v-model="selectID" placeholder="请输入查询内容">
       </zan-col>
       <zan-col col="6">
         <zan-button size="small">查询</zan-button>
